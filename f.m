@@ -14,7 +14,7 @@ function [absorption_signal] = f(theta, B)
 %                                   ||
 %                                   electron gyromagnetic ratio
 %
-% The function inputs are theta = [d Gamma B_m] and B:
+% The inputs are theta = [d Gamma B_m] and B:
 %
 %     d     : the spin density, in arbitrary units
 %     Gamma : the HWHM linewidth, in Gauss
@@ -30,9 +30,9 @@ function [absorption_signal] = f(theta, B)
 
 	% Argument processing and checking
 	if ~isequal(sort(size(theta)), [1 3])
-		error('f:invalid_argument', 'theta must be 1x3 or 3x1');
+		error('f:invalid_argument', 'theta must be 1-by-3 or 3-by-1');
 	else
-		% Extract the parameters, for easier manipulation below
+		% Extract the parameters for easier manipulation below
 		d = theta(1);     % spin density, in arbitrary units
 		Gamma = theta(2); % HWHM linewidth, in Gauss
 		B_m = theta(3);   % modulation amplitude, in Gauss
@@ -43,8 +43,8 @@ function [absorption_signal] = f(theta, B)
 		error('f:invalid_argument', 'Gamma must be a single positive float');
 	elseif ~isscalar(B_m) || ~isfloat(B_m) || ~(B_m>0)
 		error('f:invalid_argument', 'B_m must be a single positive float');
-	elseif ~isvector(B) || ~isnumeric(B)
-		error('f:invalid_argument', 'B must be numeric vector');
+	elseif ~isvector(B) || ~isfloat(B)
+		error('f:invalid_argument', 'B must be a vector of floats');
 	end
 
 	% First-harmonic signal, absorption and dispersion
