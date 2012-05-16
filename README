@@ -22,4 +22,3 @@ correctness varies wildly between operating systems.
 Production of some figures may require MATLAB's optimization toolbox.
 
 This code has been verified to work on MATLAB versions 2010b and 2011b.
-TODO: make sure to test this
