@@ -1,4 +1,4 @@
-% Display parameters for the plots
+%% Display parameters for the plots
 font_size = 18;
 linewidth = 2;
 
@@ -30,7 +30,7 @@ figure();
 handle_1 = subplot(2,1,1);
 plot(B_1, Y_1);
 set(gca(), 'XtickLabel', {});
-set(gca(), 'FontSize', font_size);
+set(gca(), 'Fontsize', font_size);
 set(gca(), 'Linewidth', linewidth);
 xlim([B_min B_max]);
 ylim([Y_min Y_max]);
@@ -41,7 +41,7 @@ text(B_min*0.9, Y_min*0.6, ...
 %% Bottom plot: scan 2
 handle_2 = subplot(2,1,2);
 plot(B_2, Y_2);
-set(gca(), 'FontSize', font_size);
+set(gca(), 'Fontsize', font_size);
 set(gca(), 'Linewidth', linewidth);
 xlim([B_min B_max]);
 ylim([Y_min Y_max]);
