@@ -37,14 +37,18 @@ function [absorption_signal] = f(theta, B)
 		Gamma = theta(2); % HWHM linewidth, in Gauss
 		B_m = theta(3);   % modulation amplitude, in Gauss
 	end
-	if ~isscalar(d) || ~isfloat(d) || ~(d>0)
-		error('f:invalid_argument', 'd must be a single positive float');
-	elseif ~isscalar(Gamma) || ~isfloat(Gamma) || ~(Gamma>0)
-		error('f:invalid_argument', 'Gamma must be a single positive float');
-	elseif ~isscalar(B_m) || ~isfloat(B_m) || ~(B_m>0)
-		error('f:invalid_argument', 'B_m must be a single positive float');
+	if ~isscalar(d) || ~isfloat(d) || ~(d>=0)
+		error('f:invalid_argument', ...
+			'd must be a single non-negative float');
+	elseif ~isscalar(Gamma) || ~isfloat(Gamma) || ~(Gamma>=0)
+		error('f:invalid_argument', ...
+			'Gamma must be a single non-negative float');
+	elseif ~isscalar(B_m) || ~isfloat(B_m) || ~(B_m>=0)
+		error('f:invalid_argument', ...
+			'B_m must be a single non-negative float');
 	elseif ~isvector(B) || ~isfloat(B)
-		error('f:invalid_argument', 'B must be a vector of floats');
+		error('f:invalid_argument', ...
+			'B must be a vector of floats');
 	end
 
 	% First-harmonic signal, absorption and dispersion
