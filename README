@@ -16,6 +16,9 @@ EPS file (e.g. figure_2.eps).
 The figures produced may require significant post-processing in order to look
 presentable. I recommend inkscape for that.
 
+I don't use the latex interpreter for drawing on the plots because its
+correctness varies wildly between operating systems.
+
 Production of some figures may require MATLAB's optimization toolbox.
 
 This code has been verified to work on MATLAB versions 2010b and 2011b.
