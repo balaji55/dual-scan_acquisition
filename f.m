@@ -30,21 +30,21 @@ function [absorption_signal] = f(theta, B)
 
 	% Argument processing and checking
 	if ~isequal(sort(size(theta)), [1 3])
-		error('theta must be 1x3 or 3x1');
+		error('f:invalid_argument', 'theta must be 1x3 or 3x1');
 	else
 		% Extract the parameters, for easier manipulation below
 		d = theta(1);     % spin density, in arbitrary units
 		Gamma = theta(2); % HWHM linewidth, in Gauss
 		B_m = theta(3);   % modulation amplitude, in Gauss
 	end
-	if ~isfloat(d) || ~(d>0)
-		error('d must be a positive float');
-	elseif ~isfloat(Gamma) || ~(Gamma>0)
-		error('Gamma must be a positive float');
-	elseif ~isfloat(B_m) || ~(B_m>0)
-		error('B_m must be a positive float');
-	elseif ~isnumeric(B)
-		error('B must be numeric');
+	if ~isscalar(d) || ~isfloat(d) || ~(d>0)
+		error('f:invalid_argument', 'd must be a single positive float');
+	elseif ~isscalar(Gamma) || ~isfloat(Gamma) || ~(Gamma>0)
+		error('f:invalid_argument', 'Gamma must be a single positive float');
+	elseif ~isscalar(B_m) || ~isfloat(B_m) || ~(B_m>0)
+		error('f:invalid_argument', 'B_m must be a single positive float');
+	elseif ~isvector(B) || ~isnumeric(B)
+		error('f:invalid_argument', 'B must be numeric vector');
 	end
 
 	% First-harmonic signal, absorption and dispersion
