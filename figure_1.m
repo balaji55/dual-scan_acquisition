@@ -29,7 +29,7 @@ figure();
 %% Top plot: scan 1
 handle_1 = subplot(2,1,1);
 plot(B_1, Y_1);
-set(gca(), 'XtickLabel', {});
+set(gca(), 'Xticklabel', {});
 set(gca(), 'Fontsize', font_size);
 set(gca(), 'Linewidth', linewidth);
 xlim([B_min B_max]);
@@ -48,7 +48,7 @@ ylim([Y_min Y_max]);
 xlabel('B (G)');
 ylabel('Signal (a.u.)');
 text(B_min*0.9, Y_min*0.6, ...
-	{'B_m_,_2 = 3 G' '\Delta_B_,_2 = 5 G'}, 'FontSize', font_size);
+	{'B_m_,_2 = 3 G' '\Delta_B_,_2 = 5 G'}, 'Fontsize', font_size);
 
 %% Remove empty space between the two plots
 pos_1 = get(handle_1, 'pos');
