@@ -37,15 +37,15 @@ function [absorption_signal] = f(theta, B)
 		Gamma = theta(2); % HWHM linewidth, in Gauss
 		B_m = theta(3);   % modulation amplitude, in Gauss
 	end
-	if ~isscalar(d) || ~isfloat(d) || ~(d>=0)
+	if ~isscalar(d) || ~isfloat(d)
 		error('f:invalid_argument', ...
-			'd must be a single non-negative float');
-	elseif ~isscalar(Gamma) || ~isfloat(Gamma) || ~(Gamma>=0)
+			'd must be a scalar float');
+	elseif ~isscalar(Gamma) || ~isfloat(Gamma)
 		error('f:invalid_argument', ...
-			'Gamma must be a single non-negative float');
-	elseif ~isscalar(B_m) || ~isfloat(B_m) || ~(B_m>=0)
+			'Gamma must be a scalar float');
+	elseif ~isscalar(B_m) || ~isfloat(B_m)
 		error('f:invalid_argument', ...
-			'B_m must be a single non-negative float');
+			'B_m must be a scalar float');
 	elseif ~isvector(B) || ~isfloat(B)
 		error('f:invalid_argument', ...
 			'B must be a vector of floats');
