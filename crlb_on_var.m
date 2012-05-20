@@ -25,7 +25,7 @@ function [bound_on_var] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
 	if ~isscalar(number_of_scans) || ~isfloat(number_of_scans) || ...
 		~(number_of_scans > 0)
 			error('crlb_on_var:invalid_argument', ...
-				'number_of_scans must be a single positive float');
+				'number_of_scans must be a positive scalar float');
 	elseif ~isequal(size(X), [2 number_of_scans])
 		error('crlb_on_var:invalid_argument', ...
 			'X must be a 2-by-number_of_scans matrix');
@@ -42,16 +42,16 @@ function [bound_on_var] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
 			'Delta_B must be a vector of positive floats');
 	elseif ~isscalar(d) || ~isfloat(d) || ~(d>0)
 		error('crlb_on_var:invalid_argument', ...
-			'd must be a single positive float');
+			'd must be a positive scalar float');
 	elseif ~isscalar(Gamma) || ~isfloat(Gamma) || ~(Gamma>0)
 		error('crlb_on_var:invalid_argument', ...
-			'Gamma must be a single positive float');
+			'Gamma must be a positive scalar float');
 	elseif ~isscalar(sigma_N) || ~isfloat(sigma_N) || ~(sigma_N>0)
 		error('crlb_on_var:invalid_argument', ...
-			'sigma_N must be a single positive float');
+			'sigma_N must be a positive scalar float');
 	elseif ~isscalar(M) || ~isnumeric(M) || ~(M>0)
 		error('crlb_on_var:invalid_argument', ...
-			'M must be a single positive numeric');
+			'M must be a positive scalar numeric');
 	end
 
     % The unknowns are d, Gamma, and one B_m for each scan
