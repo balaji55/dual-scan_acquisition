@@ -13,18 +13,18 @@ function [value] = df_dd(d, Gamma, B_m, B)
 %
 
 	% Argument checking
-	if ~isscalar(d) || ~isfloat(d) || ~(d>0)
+	if ~isscalar(d) || ~isfloat(d)
 		error('df_dd:invalid_argument', ...
-			'd must be a single positive float');
-	elseif ~isscalar(Gamma) || ~isfloat(Gamma) || ~(Gamma>0)
+			'd must be a scalar float');
+	elseif ~isscalar(Gamma) || ~isfloat(Gamma)
 		error('df_dd:invalid_argument', ...
-			'Gamma must be a single positive float');
-	elseif ~isscalar(B_m) || ~isfloat(B_m) || ~(B_m>0)
+			'Gamma must be a scalar float');
+	elseif ~isscalar(B_m) || ~isfloat(B_m)
 		error('df_dd:invalid_argument', ...
-			'B_m must be a single positive float');
+			'B_m must be a scalar float');
 	elseif ~isscalar(B) || ~isfloat(B)
 		error('df_dd:invalid_argument', ...
-			'B must be a single float');
+			'B must be a scalar float');
 	end
 
 	% Please pardon the unreadable math....
