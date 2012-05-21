@@ -1,6 +1,6 @@
-function [bound_on_var] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
+function [bound] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
 %
-% [bound_on_var] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
+% [bound] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
 %
 % This function computes the Cramer-Rao lower bound on the variance of
 % Gamma_hat, assuming unbiased estimators.
@@ -109,10 +109,10 @@ function [bound_on_var] = crlb_on_var(X, number_of_scans, d, Gamma, sigma_N, M)
 	J_inv = pinv(J_total);
 
 	% Get the bound on the variance of Gamma_hat
-	bound_on_var = J_inv(2, 2);
+	bound = J_inv(2, 2);
 
 	% Rounding errors sometimes make the bound complex. This will overestimate
 	% the bound in that case, which is conservative
-	bound_on_var = abs(bound_on_var);
+	bound = abs(bound);
 
 end
