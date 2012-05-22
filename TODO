@@ -2,9 +2,12 @@ Test all files under as many versions of MATLAB as I can find:
 
 	figure_1.m: 2010b, 2011b
 	figure_2.m: 2010b, 2011b
-	figure_3.m: 2011b
-	figure_4.m: 2011b
+	figure_3.m: 2010b, 2011b
+	figure_4.m: 2010b, 2011b
+	figure_5.m: 
+	figure_6.m: 
+	figure_7.m: 
 
-Consider octave and scilab compatibility as well. We would have to have separate
-files for scilab, since the comment syntax differs. Maybe a separate file for
+Consider octave and scilab compatibility as well. We would need separate files
+for scilab, since the comment syntax differs. Maybe a separate set of files for
 each program would be best.
