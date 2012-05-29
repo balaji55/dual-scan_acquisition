@@ -62,7 +62,6 @@ function [theta_hat] = estimate_parameters(Gamma_min, Gamma_max, ...
 	residual_norm = zeros(initializations, 1);
 
 	for i=1:initializations
-
 		guess = [0 Gamma_guess(i) B_m_guess];
 		[theta_hats(i,:), residual_norm(i)] = lsqnonlin(@fit_error, ...
 			guess,                         ... starting guess
@@ -97,7 +96,6 @@ function [errors] = fit_error(theta, number_of_scans, Y, B)
 	% Iterate over the scans
 	for i=1:1:number_of_scans
 		ideal_data = f([d Gamma B_m(i)], B(i,:));
-
 		errors(i,:) = Y(i,:) - ideal_data;
 	end
 

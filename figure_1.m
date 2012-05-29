@@ -59,6 +59,6 @@ pos_1(4) = pos_1(4) + gap/2;
 pos_2(4) = pos_2(4) + gap/2;
 set(handle_1, 'pos', pos_1);
 set(handle_2, 'pos', pos_2);
- 
+
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
