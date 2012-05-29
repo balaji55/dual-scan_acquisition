@@ -2,8 +2,8 @@ This is the MATLAB code and data needed to reproduce the figures in the
 following paper:
 
 "Dual-scan acquisition for accelerated continuous-wave EPR oximetry". Jason
-Palmer, Lee C. Potter, David H. Johnson, Jay L. Zweier, Rizwan Ahmad. Submitted
-to the Journal of Magnetic Resonance in 2012.
+Palmer, Lee C Potter, David H Johnson, Jay L Zweier, Rizwan Ahmad. Submitted to
+the Journal of Magnetic Resonance in 2012.
 
 - Instructions -----------------------------------------------------------------
 
@@ -20,5 +20,3 @@ I don't use the latex interpreter for drawing on the plots because its
 correctness varies wildly between operating systems.
 
 Production of some figures may require MATLAB's optimization toolbox.
-
-This code has been verified to work on MATLAB versions 2010b and 2011b.
