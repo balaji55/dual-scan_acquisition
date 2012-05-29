@@ -1,13 +1,5 @@
-Test all files under as many versions of MATLAB as I can find:
+Consider octave and scilab compatibility. We would need separate files for
+scilab, since the comment syntax differs. Maybe a separate set of files for each
+program would be best.
 
-	figure_1.m: 2010b, 2011b
-	figure_2.m: 2010b, 2011b
-	figure_3.m: 2010b, 2011b
-	figure_4.m: 2010b, 2011b
-	figure_5.m: 
-	figure_6.m: 
-	figure_7.m: 
-
-Consider octave and scilab compatibility as well. We would need separate files
-for scilab, since the comment syntax differs. Maybe a separate set of files for
-each program would be best.
+Where appropriate, use crlb_on_mean_std rather than crlb_on_var

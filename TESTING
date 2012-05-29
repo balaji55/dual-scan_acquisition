@@ -1,0 +1,13 @@
+This code has been verified to run on the following Matlab versions:
+
+	figure_1.m: 2010b, 2011b
+	figure_2.m: 2010b, 2011b
+	figure_3.m: 2010b, 2011b
+	figure_4.m: 2010b, 2011b
+	figure_5.m: 2010b
+	figure_6.m: 
+	figure_7.m: 
+
+If you know of a version that works and isn't listed here, or of a version that
+doesn't work, please let me know. You can report these and any other issues at
+https://github.com/jalan/dual-scan_acquisition/issues
