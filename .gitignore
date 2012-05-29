@@ -1,5 +1,6 @@
 # backup files
 *~
 
-# eps images produced by the code
+# images
 *.eps
+*.png
