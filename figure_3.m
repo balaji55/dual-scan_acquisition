@@ -24,14 +24,10 @@ tumor.single.Delta_B = 3.24; % sweep width, in Gauss
 tumor.single.scans   = 1;    % number of scans
 
 %% Predicted results for tumor oximetry, optimized single-scan
-tumor.single.predicted_std = zeros(size(tumor.Gamma));
-for i=1:length(tumor.Gamma)
-	tumor.single.predicted_std(i) = ...
-		sqrt(crlb_on_var( ...
-			[tumor.single.B_m; tumor.single.Delta_B], ...
-			tumor.single.scans, d, tumor.Gamma(i), sigma_N, M ...
-		));
-end
+tumor.single.predicted_mean_std = crlb_on_mean_std( ...
+	[tumor.single.B_m; tumor.single.Delta_B], tumor.single.scans, d, ...
+	sigma_N, M, tumor.Gamma_min, tumor.Gamma_max, Gamma_steps ...
+);
 
 %% Simulated results for tumor oximetry, optimized single-scan
 tumor.single.simulated_std = zeros(size(tumor.Gamma)); % preallocate
@@ -64,20 +60,19 @@ for i=1:length(tumor.Gamma)
 	tumor.single.simulated_std(i) = std(Gamma_hat);
 end
 
+% Average across the range
+tumor.single.simulated_mean_std = mean(tumor.single.simulated_std);
+
 %% Scanning parameters for tumor oximetry, optimized dual-scan
 tumor.dual.B_m     = [0.65 3.17]; % modulation amplitudes, in Gauss
 tumor.dual.Delta_B = [1.38 4.68]; % sweep widths, in Gauss
 tumor.dual.scans   = 2;           % number of scans
 
 %% Predicted results for tumor oximetry, optimized dual-scan
-tumor.dual.predicted_std = zeros(size(tumor.Gamma));
-for i=1:length(tumor.Gamma)
-	tumor.dual.predicted_std(i) = ...
-		sqrt(crlb_on_var( ...
-			[tumor.dual.B_m; tumor.dual.Delta_B], ...
-			tumor.dual.scans, d, tumor.Gamma(i), sigma_N, M ...
-		));
-end
+tumor.dual.predicted_mean_std = crlb_on_mean_std( ...
+	[tumor.dual.B_m; tumor.dual.Delta_B], tumor.dual.scans, d, ...
+	sigma_N, M, tumor.Gamma_min, tumor.Gamma_max, Gamma_steps ...
+);
 
 %% Simulated results for tumor oximetry, optimized dual-scan
 tumor.dual.simulated_std = zeros(size(tumor.Gamma)); % preallocate
@@ -110,10 +105,7 @@ for i=1:length(tumor.Gamma)
 	tumor.dual.simulated_std(i) = std(Gamma_hat);
 end
 
-%% Average across the range
-tumor.single.predicted_mean_std = mean(tumor.single.predicted_std);
-tumor.single.simulated_mean_std = mean(tumor.single.simulated_std);
-tumor.dual.predicted_mean_std = mean(tumor.dual.predicted_std);
+% Average across the range
 tumor.dual.simulated_mean_std = mean(tumor.dual.simulated_std);
 
 %% Range of linewidths suitable for tissue oximetry with a LiNc-BuO probe
@@ -128,14 +120,10 @@ tissue.single.Delta_B = 3.84; % sweep width, in Gauss
 tissue.single.scans   = 1;    % number of scans
 
 %% Predicted results for tissue oximetry, optimized single-scan
-tissue.single.predicted_std = zeros(size(tissue.Gamma));
-for i=1:length(tissue.Gamma)
-	tissue.single.predicted_std(i) = ...
-		sqrt(crlb_on_var( ...
-			[tissue.single.B_m; tissue.single.Delta_B], ...
-			tissue.single.scans, d, tissue.Gamma(i), sigma_N, M ...
-		));
-end
+tissue.single.predicted_mean_std = crlb_on_mean_std( ...
+	[tissue.single.B_m; tissue.single.Delta_B], tissue.single.scans, d, ...
+	sigma_N, M, tissue.Gamma_min, tissue.Gamma_max, Gamma_steps ...
+);
 
 %% Simulated results for tissue oximetry, optimized single-scan
 tissue.single.simulated_std = zeros(size(tissue.Gamma)); % preallocate
@@ -168,20 +156,19 @@ for i=1:length(tissue.Gamma)
 	tissue.single.simulated_std(i) = std(Gamma_hat);
 end
 
+% Average across the range
+tissue.single.simulated_mean_std = mean(tissue.single.simulated_std);
+
 %% Scanning parameters for tissue oximetry, optimized dual-scan
 tissue.dual.B_m     = [0.74 3.96]; % modulation amplitudes, in Gauss
 tissue.dual.Delta_B = [1.65 5.56]; % sweep widths, in Gauss
 tissue.dual.scans   = 2;           % number of scans
 
 %% Predicted results for tissue oximetry, optimized dual-scan
-tissue.dual.predicted_std = zeros(size(tissue.Gamma));
-for i=1:length(tissue.Gamma)
-	tissue.dual.predicted_std(i) = ...
-		sqrt(crlb_on_var( ...
-			[tissue.dual.B_m; tissue.dual.Delta_B], ...
-			tissue.dual.scans, d, tissue.Gamma(i), sigma_N, M ...
-		));
-end
+tissue.dual.predicted_mean_std = crlb_on_mean_std( ...
+	[tissue.dual.B_m; tissue.dual.Delta_B], tissue.dual.scans, d, ...
+	sigma_N, M, tissue.Gamma_min, tissue.Gamma_max, Gamma_steps ...
+);
 
 %% Simulated results for tissue oximetry, optimized dual-scan
 tissue.dual.simulated_std = zeros(size(tissue.Gamma)); % preallocate
@@ -214,10 +201,7 @@ for i=1:length(tissue.Gamma)
 	tissue.dual.simulated_std(i) = std(Gamma_hat);
 end
 
-%% Average across the range
-tissue.single.predicted_mean_std = mean(tissue.single.predicted_std);
-tissue.single.simulated_mean_std = mean(tissue.single.simulated_std);
-tissue.dual.predicted_mean_std = mean(tissue.dual.predicted_std);
+% Average across the range
 tissue.dual.simulated_mean_std = mean(tissue.dual.simulated_std);
 
 %% Range of linewidths suitable for broad-range oximetry with a LiNc-BuO probe
@@ -232,14 +216,10 @@ broad.single.Delta_B = 8.95; % sweep width, in Gauss
 broad.single.scans   = 1;    % number of scans
 
 %% Predicted results for broad-range oximetry, optimized single-scan
-broad.single.predicted_std = zeros(size(broad.Gamma));
-for i=1:length(broad.Gamma)
-	broad.single.predicted_std(i) = ...
-		sqrt(crlb_on_var( ...
-			[broad.single.B_m; broad.single.Delta_B], ...
-			broad.single.scans, d, broad.Gamma(i), sigma_N, M ...
-		));
-end
+broad.single.predicted_mean_std = crlb_on_mean_std( ...
+	[broad.single.B_m; broad.single.Delta_B], broad.single.scans, d, ...
+	sigma_N, M, broad.Gamma_min, broad.Gamma_max, Gamma_steps ...
+);
 
 %% Simulated results for broad-range oximetry, optimized single-scan
 broad.single.simulated_std = zeros(size(broad.Gamma)); % preallocate
@@ -272,20 +252,19 @@ for i=1:length(broad.Gamma)
 	broad.single.simulated_std(i) = std(Gamma_hat);
 end
 
+% Average across the range
+broad.single.simulated_mean_std = mean(broad.single.simulated_std);
+
 %% Scanning parameters for broad-range oximetry, optimized dual-scan
 broad.dual.B_m     = [1.78  9.50]; % modulation amplitudes, in Gauss
 broad.dual.Delta_B = [4.14 13.36]; % sweep widths, in Gauss
 broad.dual.scans   = 2;            % number of scans
 
 %% Predicted results for broad-range oximetry, optimized dual-scan
-broad.dual.predicted_std = zeros(size(broad.Gamma));
-for i=1:length(broad.Gamma)
-	broad.dual.predicted_std(i) = ...
-		sqrt(crlb_on_var( ...
-			[broad.dual.B_m; broad.dual.Delta_B], ...
-			broad.dual.scans, d, broad.Gamma(i), sigma_N, M ...
-		));
-end
+broad.dual.predicted_mean_std = crlb_on_mean_std( ...
+	[broad.dual.B_m; broad.dual.Delta_B], broad.dual.scans, d, ...
+	sigma_N, M, broad.Gamma_min, broad.Gamma_max, Gamma_steps ...
+);
 
 %% Simulated results for broad-range oximetry, optimized dual-scan
 broad.dual.simulated_std = zeros(size(broad.Gamma)); % preallocate
@@ -318,10 +297,7 @@ for i=1:length(broad.Gamma)
 	broad.dual.simulated_std(i) = std(Gamma_hat);
 end
 
-%% Average across the range
-broad.single.predicted_mean_std = mean(broad.single.predicted_std);
-broad.single.simulated_mean_std = mean(broad.single.simulated_std);
-broad.dual.predicted_mean_std = mean(broad.dual.predicted_std);
+% Average across the range
 broad.dual.simulated_mean_std = mean(broad.dual.simulated_std);
 
 %% New figure window
