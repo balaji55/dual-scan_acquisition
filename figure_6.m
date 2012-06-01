@@ -147,8 +147,6 @@ handle_1 = subplot(2, 1, 1);
 
 stds = 3; % how many standard deviations to show on each side
 
-xlim([0.5 3.5]) % set this first for consistent error bar widths
-
 hold('on');
 errorbar([1 1], traditional.Gamma_hat_mean, stds*traditional.Gamma_hat_std, ...
 	' r.', 'Linewidth', linewidth, 'Markersize', marker_size);
