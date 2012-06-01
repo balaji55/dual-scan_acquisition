@@ -178,7 +178,7 @@ text(2, my_axis(4)+(my_axis(4)-my_axis(3))*0.1, {'One scan,' 'optimized'}, ...
 text(3, my_axis(4)+(my_axis(4)-my_axis(3))*0.1, {'Dual-scan,' 'optimized'}, ...
 	'Fontsize', font_size, 'Horizontalalignment', 'center');
 
-% add (A)
+% Add '(A)'
 y_limits = ylim();
 text(-0.05, y_limits(2), '(A)', 'Fontsize', font_size)
 
@@ -221,7 +221,7 @@ pos_2(4) = pos_2(4) + gap/4;
 set(handle_1, 'pos', pos_1);
 set(handle_2, 'pos', pos_2);
 
-% add (B)
+% Add '(B)' after reducing the space
 y_limits = ylim();
 text(-0.05, y_limits(2), '(B)', 'Fontsize', font_size)
 
