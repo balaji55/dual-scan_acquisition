@@ -180,7 +180,7 @@ text(3, my_axis(4)+(my_axis(4)-my_axis(3))*0.1, {'Dual-scan,' 'optimized'}, ...
 
 % Add '(A)'
 y_limits = ylim();
-text(-0.05, y_limits(2), '(A)', 'Fontsize', font_size)
+text(-0.05, y_limits(2), '(A)', 'Fontsize', font_size);
 
 box('on');
 
@@ -223,7 +223,7 @@ set(handle_2, 'pos', pos_2);
 
 % Add '(B)' after reducing the space
 y_limits = ylim();
-text(-0.05, y_limits(2), '(B)', 'Fontsize', font_size)
+text(-0.05, y_limits(2), '(B)', 'Fontsize', font_size);
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
