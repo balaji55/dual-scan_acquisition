@@ -36,7 +36,7 @@ xlim([B_min B_max]);
 ylim([Y_min Y_max]);
 ylabel('Signal (a.u.)');
 text(B_min*0.9, Y_min*0.6, ...
-	{'B_m_,_1 = 0.5 G' '\Delta_B_,_1 = 2 G'}, 'FontSize', font_size);
+	{'B_m_,_1 = 0.5 G' '\Delta_B_,_1 = 2 G'}, 'Fontsize', font_size);
 
 %% Bottom plot: scan 2
 handle_2 = subplot(2,1,2);
