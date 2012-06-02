@@ -1,6 +1,3 @@
 Consider octave and scilab compatibility. We would need separate files for
 scilab, since the comment syntax differs. Maybe a separate set of files for each
 program would be best.
-
-Where appropriate, use 'Horizontalalignment', 'center' in text() calls. This
-should be done for figures 3 and 5
