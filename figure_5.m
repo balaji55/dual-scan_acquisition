@@ -100,9 +100,12 @@ brighten(1); % brighten colors
 
 % This will need cleaned up in post-processing
 my_axis = axis();
-text(0.5, my_axis(4)*1.04, '0-15 mmHg', 'Fontsize', font_size);
-text(1.5, my_axis(4)*1.04, '0-30 mmHg', 'Fontsize', font_size);
-text(2.5, my_axis(4)*1.04, '0-160 mmHg', 'Fontsize', font_size);
+text(1, my_axis(4)*1.04, '0-15 mmHg', 'Fontsize', font_size, ...
+	'Horizontalalignment', 'center');
+text(2, my_axis(4)*1.04, '0-30 mmHg', 'Fontsize', font_size, ...
+	'Horizontalalignment', 'center');
+text(3, my_axis(4)*1.04, '0-160 mmHg', 'Fontsize', font_size, ...
+	'Horizontalalignment', 'center');
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
