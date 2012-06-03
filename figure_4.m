@@ -46,14 +46,14 @@ for j=1:length(Gamma_max)
 
 		% Find a local minimum
 		[X_hat(:,:,i), bound(i)] = fmincon(@crlb_on_mean_std, ...
-				guess,                      ... starting guess
-				[], [], [], [],             ... no complicated constraints
-				ones(2, scans)*lower_bound, ... lower bounds
-				ones(2, scans)*upper_bound, ... upper bounds
-				[],                         ... no non-linear constraints
-				'',                         ... no special options
-				scans, d, sigma_N, M,       ... extra arguments
-				Gamma_min, Gamma_max(j), Gamma_steps); ... more extra arguments
+				guess,                      ... % starting guess
+				[], [], [], [],             ... % no complicated constraints
+				ones(2, scans)*lower_bound, ... % lower bounds
+				ones(2, scans)*upper_bound, ... % upper bounds
+				[],                         ... % no non-linear constraints
+				'',                         ... % no special options
+				scans, d, sigma_N, M,       ... % extra arguments
+				Gamma_min, Gamma_max(j), Gamma_steps); ... % extra arguments
 
 	end
 

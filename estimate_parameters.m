@@ -64,11 +64,11 @@ function [theta_hat] = estimate_parameters(Gamma_min, Gamma_max, ...
 	for i=1:initializations
 		guess = [0 Gamma_guess(i) B_m_guess];
 		[theta_hats(i,:), residual_norm(i)] = lsqnonlin(@fit_error, ...
-			guess,                         ... starting guess
-			zeros(1, number_of_scans + 2), ... lower bounds (zero)
-			inf(1, number_of_scans + 2),   ... upper bounds (infinity)
-			'',                            ... no special options
-			number_of_scans, Y, B);        ... extra arguments to fit_error
+			guess,                         ... % starting guess
+			zeros(1, number_of_scans + 2), ... % lower bounds (zero)
+			inf(1, number_of_scans + 2),   ... % upper bounds (infinity)
+			'',                            ... % no special options
+			number_of_scans, Y, B);        ... % extra arguments to fit_error
 	end
 
 	% Return the theta_hat with best residual norm
