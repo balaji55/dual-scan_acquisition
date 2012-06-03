@@ -96,7 +96,7 @@ line([1.5 1.5], ylim(), 'Linewidth', linewidth, ...
 	'Linestyle', '-', 'Color', 'black');
 line([2.5 2.5], ylim(), 'Linewidth', linewidth, ...
 	'Linestyle', '-', 'Color', 'black');
-brighten(1); % brighten colors
+brighten(0.999); % brighten colors
 
 % This will need cleaned up in post-processing
 my_axis = axis();
