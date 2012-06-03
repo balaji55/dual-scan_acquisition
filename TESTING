@@ -4,8 +4,13 @@ This code has been verified to run on the following programs:
 	MATLAB 2011b
 
 	octave 3.6 (in progress):
-		figure_1
-
+		figure_1: good to go
+		figure_2: good to go
+		figure_3: lqsnonlin isn't in octave core
+		figure_4: fmincon isn't in octave core
+		figure_5: brighten differs in octave and MATLAB
+		figure_6: lqsnonlin isn't in octave core
+		figure_7: good to go
 
 If you know of a version that works and isn't listed here, or of a newer version
 that doesn't work, please let me know. You can report these and other issues at
