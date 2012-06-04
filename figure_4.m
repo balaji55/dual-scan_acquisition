@@ -44,17 +44,16 @@ for j=1:length(Gamma_max)
 		%guess = lower_bound + rand(2, 2)*(upper_bound - lower_bound);
 		guess = Gamma_max(j)*[1.22 6.46; 2.74 8.99];
 
-		% Find a local minimum
-		[X_hat(:,:,i), bound(i)] = fmincon(@crlb_on_mean_std, ...
-				guess,                      ... % starting guess
-				[], [], [], [],             ... % no complicated constraints
-				ones(2, scans)*lower_bound, ... % lower bounds
-				ones(2, scans)*upper_bound, ... % upper bounds
-				[],                         ... % no non-linear constraints
-				'',                         ... % no special options
-				scans, d, sigma_N, M,       ... % extra arguments
-				Gamma_min, Gamma_max(j), Gamma_steps); ... % extra arguments
+		% Create the objective function
+		objective = @(X) crlb_on_mean_std(X, scans, d, sigma_N, M, ...
+			Gamma_min, Gamma_max(j), Gamma_steps);
 
+		% Find a local minimum
+		[X_hat(:,:,i), bound(i)] = fmincon(objective, ...
+				guess,                       ... % starting guess
+				[], [], [], [],              ... % no complicated constraints
+				ones(2, scans)*lower_bound,  ... % lower bounds
+				ones(2, scans)*upper_bound); ... % upper bounds
 	end
 
 	% Tell us the best result and where it happened
