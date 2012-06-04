@@ -156,6 +156,7 @@ errorbar([3 3],   dual_scan.Gamma_hat_mean, stds*  dual_scan.Gamma_hat_std, ...
 	' b.', 'Linewidth', linewidth, 'Markersize', marker_size);
 % Fix error bar widths in post-processing
 
+xlim([0.5 3.5]);
 ylim([Gamma_min Gamma_max]);
 
 set(gca(), 'Xticklabel', {});
