@@ -6,10 +6,10 @@ This code has been verified to run on the following programs:
 	octave 3.6 (in progress):
 		figure_1: good to go
 		figure_2: good to go
-		figure_3: lqsnonlin isn't in octave core
+		figure_3: good to go
 		figure_4: fmincon isn't in octave core
 		figure_5: good to go
-		figure_6: lqsnonlin isn't in octave core
+		figure_6: good to go
 		figure_7: good to go
 
 If you know of a version that works and isn't listed here, or of a newer version
