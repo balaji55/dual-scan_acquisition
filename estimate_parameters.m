@@ -54,6 +54,9 @@ function [theta_hat] = estimate_parameters(Gamma_min, Gamma_max, ...
 		'B_m_guess must be a 1-by-number_of_scans vector of positive floats');
 	end
 
+	% What program are we using?
+	is_octave = exist('OCTAVE_VERSION', 'builtin');
+
 	% We can try a few different initializations
 	Gamma_guess = linspace(Gamma_min, Gamma_max, initializations);
 
@@ -62,14 +65,33 @@ function [theta_hat] = estimate_parameters(Gamma_min, Gamma_max, ...
 	residual_norm = zeros(initializations, 1);
 
 	% Create the objective function
-	fit_error_ready = @(theta) fit_error(theta, number_of_scans, Y, B);
+	if is_octave % we're using octave
+		fit_error_octave = @(theta) ...
+			sum(sum(fit_error(theta, number_of_scans, Y, B).^2));
+	else % we're using MATLAB
+		fit_error_matlab = @(theta) ...
+			fit_error(theta, number_of_scans, Y, B);
+	end
 
 	for i=1:initializations
 		guess = [0 Gamma_guess(i) B_m_guess];
-		[theta_hats(i,:), residual_norm(i)] = lsqnonlin(fit_error_ready, ...
-			guess,                         ... % starting guess
-			zeros(1, number_of_scans + 2), ... % lower bounds (zero)
-			inf(1, number_of_scans + 2));  ... % upper bounds (infinity)
+
+		if is_octave % we're using octave
+			[theta_hats(i,:), residual_norm(i)] = sqp( ...
+				guess,                         ... % starting guess
+				fit_error_octave,              ... % objective function
+				[], [],                        ... % no constraints
+				zeros(1, number_of_scans + 2), ... % lower bounds (zero)
+				inf(1, number_of_scans + 2),   ... % upper bounds (infinity)
+				400,                           ... % maximum iterations
+				1e-6);                         ... % stopping tolerance
+		else % we're using MATLAB
+			[theta_hats(i,:), residual_norm(i)] = lsqnonlin( ...
+				fit_error_matlab,              ... % objective function
+				guess,                         ... % starting guess
+				zeros(1, number_of_scans + 2), ... % lower bounds (zero)
+				inf(1, number_of_scans + 2));  ... % upper bounds (infinity)
+		end
 	end
 
 	% Return the theta_hat with best residual norm
