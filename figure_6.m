@@ -148,12 +148,15 @@ handle_1 = subplot(2, 1, 1);
 stds = 3; % how many standard deviations to show on each side
 
 hold('on');
-errorbar([1 1], traditional.Gamma_hat_mean, stds*traditional.Gamma_hat_std, ...
-	' r.', 'Linewidth', linewidth, 'Markersize', marker_size);
-errorbar([2 2], single_scan.Gamma_hat_mean, stds*single_scan.Gamma_hat_std, ...
-	' g.', 'Linewidth', linewidth, 'Markersize', marker_size);
-errorbar([3 3],   dual_scan.Gamma_hat_mean, stds*  dual_scan.Gamma_hat_std, ...
-	' b.', 'Linewidth', linewidth, 'Markersize', marker_size);
+handle_a = errorbar([1 1], ...
+	traditional.Gamma_hat_mean, stds*traditional.Gamma_hat_std, ' r.');
+set(handle_a, 'Linewidth', linewidth, 'Markersize', marker_size);
+handle_b = errorbar([2 2], ...
+	single_scan.Gamma_hat_mean, stds*single_scan.Gamma_hat_std, ' g.');
+set(handle_b, 'Linewidth', linewidth, 'Markersize', marker_size);
+handle_c = errorbar([3 3], ...
+	dual_scan.Gamma_hat_mean, stds*dual_scan.Gamma_hat_std, ' b.');
+set(handle_c, 'Linewidth', linewidth, 'Markersize', marker_size);
 % Fix error bar widths in post-processing
 
 xlim([0.5 3.5]);
