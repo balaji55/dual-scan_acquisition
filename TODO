@@ -1,6 +1,2 @@
-Finish octave compatibility. This will involve a little bit of conditional
-code--one block for MATLAB and one block for octave--in a few files.
-
-Consider scilab compatibility as well. This would involve separate files for
-scilab. There is a MATLAB->scilab code conversion tool that could do a lot of
-the work.
+Consider scilab compatibility. This would involve separate files for scilab.
+There is a MATLAB->scilab code conversion tool that could do a lot of the work.
