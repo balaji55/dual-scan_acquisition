@@ -1,5 +1,5 @@
-This is the MATLAB code and data needed to reproduce the figures in the
-following paper:
+This is the code and data needed to reproduce the figures in the following
+paper:
 
 "Dual-scan acquisition for accelerated continuous-wave EPR oximetry". Jason
 Palmer, Lee C Potter, David H Johnson, Jay L Zweier, Rizwan Ahmad. Accepted for
@@ -15,8 +15,8 @@ https://github.com/jalan/dual-scan_acquisition/wiki
 - Instructions -----------------------------------------------------------------
 
 To reproduce the desired figure, run the corresponding script (e.g. figure_2.m)
-in MATLAB. This will produce the figure in a new figure window and save it as an
-EPS file (e.g. figure_2.eps).
+in MATLAB (or octave). This will produce the figure in a new figure window and
+save it as an EPS file (e.g. figure_2.eps).
 
 - Notes ------------------------------------------------------------------------
 
@@ -26,4 +26,5 @@ presentable. I recommend inkscape for that.
 I don't use the latex interpreter for drawing on the plots because its
 correctness varies wildly between operating systems.
 
-Production of some figures may require MATLAB's optimization toolbox.
+Production of some figures requires MATLAB's optimization toolbox. (If you use
+octave, no non-core functions are required.)
