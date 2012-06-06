@@ -22,6 +22,9 @@ Gamma_steps = 32;
 lower_bound = 0.01;
 upper_bound = 100;
 
+%% What program are we using?
+is_octave = exist('OCTAVE_VERSION', 'builtin');
+
 %% Preallocate
 parameters = zeros(2, scans, length(Gamma_max));
 bounds = zeros(size(Gamma_max));
@@ -45,15 +48,37 @@ for j=1:length(Gamma_max)
 		guess = Gamma_max(j)*[1.22 6.46; 2.74 8.99];
 
 		% Create the objective function
-		objective = @(X) crlb_on_mean_std(X, scans, d, sigma_N, M, ...
-			Gamma_min, Gamma_max(j), Gamma_steps);
+		if is_octave % we're using octave
+			% X and guess must be vectors!
+			guess = guess(:);
+			objective = @(X) crlb_on_mean_std([X(1:scans) X(scans+1:end)], ...
+				scans, d, sigma_N, M, ...
+				Gamma_min, Gamma_max(j), Gamma_steps);
+		else % we're using MATLAB
+			objective = @(X) crlb_on_mean_std(X, scans, d, sigma_N, M, ...
+				Gamma_min, Gamma_max(j), Gamma_steps);
+		end
 
 		% Find a local minimum
-		[X_hat(:,:,i), bound(i)] = fmincon(objective, ...
+		if is_octave % we're using octave
+			[X_hat_octave, bound(i)] = sqp( ...
+				guess,       ... % starting guess
+				objective,   ... % objective function
+				[], [],      ... % no constraints
+				lower_bound, ... % lower bounds (all the same)
+				upper_bound, ... % upper bounds (all the same)
+				400,         ... % maximum iterations
+				1e-6);       ... % stopping tolerance
+			X_hat(:,:,i) = [X_hat_octave(1:scans) X_hat_octave(scans+1:end)];
+		else % we're using MATLAB
+			[X_hat(:,:,i), bound(i)] = fmincon( ...
+				objective,                   ... % objective function
 				guess,                       ... % starting guess
 				[], [], [], [],              ... % no complicated constraints
 				ones(2, scans)*lower_bound,  ... % lower bounds
 				ones(2, scans)*upper_bound); ... % upper bounds
+		end
+
 	end
 
 	% Tell us the best result and where it happened
