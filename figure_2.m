@@ -1,3 +1,5 @@
+function figure_2
+
 %% Display parameters for the plots
 font_size = 18;
 linewidth = 2;
@@ -92,3 +94,5 @@ legend( ...
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
+
+end

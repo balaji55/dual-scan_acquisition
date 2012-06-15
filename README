@@ -14,7 +14,7 @@ https://github.com/jalan/dual-scan_acquisition/wiki
 
 - Instructions -----------------------------------------------------------------
 
-To reproduce the desired figure, run the corresponding script (e.g. figure_2.m)
+To reproduce the desired figure, call the corresponding function (e.g. figure_2)
 in MATLAB (or octave). This will produce the figure in a new figure window and
 save it as an EPS file (e.g. figure_2.eps).
 

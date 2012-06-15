@@ -1,3 +1,5 @@
+function figure_5
+
 %% Display parameters for the plots
 font_size = 18;
 linewidth = 2;
@@ -109,3 +111,5 @@ text(3, my_axis(4)*1.04, '0-160 mmHg', 'Fontsize', font_size, ...
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
+
+end

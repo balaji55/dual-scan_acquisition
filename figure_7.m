@@ -1,3 +1,5 @@
+function figure_7
+
 %% Display parameters for the plots
 font_size = 18;
 linewidth = 2;
@@ -129,3 +131,5 @@ set(handle_3, 'pos', pos_3);
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
+
+end

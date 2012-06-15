@@ -1,3 +1,5 @@
+function figure_4
+
 %% Display parameters for the plots
 font_size = 18;
 linewidth = 2;
@@ -124,3 +126,5 @@ legend('B_m_,_1', '\Delta_B_,_1', 'B_m_,_2', '\Delta_B_,_2', ...
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
+
+end

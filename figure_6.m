@@ -1,3 +1,5 @@
+function figure_6
+
 %% Display parameters for the plots
 font_size = 18;
 linewidth = 2;
@@ -231,3 +233,5 @@ text(-0.05, y_limits(2), '(B)', 'Fontsize', font_size);
 
 %% Save figure as an EPS file
 print('-depsc2', [mfilename() '.eps']);
+
+end
