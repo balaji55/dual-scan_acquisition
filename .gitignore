@@ -1,5 +1,6 @@
 # backup files
 *~
+*.swp
 
 # images
 *.eps
