@@ -1,1 +1,1 @@
-Test in octave 3.8
+Consider switching sqp to nonlin_min in estimate_parameters.m
