@@ -27,6 +27,11 @@ upper_bound = 100;
 %% What program are we using?
 is_octave = exist('OCTAVE_VERSION', 'builtin');
 
+%% If using octave, we'll use functions from the optim package
+if is_octave
+	pkg("load", "optim");
+end
+
 %% Preallocate
 parameters = zeros(2, scans, length(Gamma_max));
 bounds = zeros(size(Gamma_max));
@@ -63,14 +68,12 @@ for j=1:length(Gamma_max)
 
 		% Find a local minimum
 		if is_octave % we're using octave
-			[X_hat_octave, bound(i)] = sqp( ...
-				guess,       ... % starting guess
+			[X_hat_octave, bound(i)] = nonlin_min( ...
 				objective,   ... % objective function
-				[], [],      ... % no constraints
-				lower_bound, ... % lower bounds (all the same)
-				upper_bound, ... % upper bounds (all the same)
-				400,         ... % maximum iterations
-				1e-6);       ... % stopping tolerance
+				guess,       ... % starting guess
+				optimset(...
+					"lbound", ones(2*scans, 1)*lower_bound, ...
+					"ubound", ones(2*scans, 1)*upper_bound));
 			X_hat(:,:,i) = [X_hat_octave(1:scans) X_hat_octave(scans+1:end)];
 		else % we're using MATLAB
 			[X_hat(:,:,i), bound(i)] = fmincon( ...

@@ -29,8 +29,8 @@ presentable. I recommend inkscape for that.
 I don't use the latex interpreter for drawing on the plots because its
 correctness varies wildly between operating systems.
 
-Production of some figures requires MATLAB's optimization toolbox. (If you use
-octave, no non-core functions are required.)
+Production of some figures requires MATLAB's optimization toolbox or octave's
+optim package.
 
 - License ----------------------------------------------------------------------
 
